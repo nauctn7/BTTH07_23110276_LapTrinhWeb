@@ -1,9 +1,8 @@
 # 📝 Bài thực hành số 7 – Spring Boot + Thymeleaf
-
+Tạo project spring boot thực hiện chức năng CRUD và tìm kiếm phân trang cho chức năng Category sử dụng Thymeleaf và Thymeleaf Dialect để làm view và layout cho web. Bố cục trang (header (chứa hình của mình), content, footer (chứa thông tin của sinh viên thực hiện).
 ## 📌 Thông tin sinh viên
 - **MSSV**: 23110276  
-- **Họ tên**: Cáp Thanh Nhàn  
-- **Lớp**: HCMUTE  
+- **Họ tên**: Cáp Thanh Nhàn   
 
 ## 🚀 Công nghệ sử dụng
 - **Spring Boot 3.x**
