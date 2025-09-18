@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout_admin}">
+<head>
+  <!-- Tiêu đề trang theo trạng thái -->
+  <title layout:fragment="title"
+        th:text="${category.isEdit} ? #{cate.title.edit} : #{cate.title.add}">
+    Thêm Danh mục
+  </title>
+</head>
+<body>
+<main layout:fragment="content" class="container my-4">
+  <h4 class="mb-3"
+      th:text="${category.isEdit} ? #{cate.title.edit} : #{cate.title.add}">
+    Thêm Danh mục
+  </h4>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form th:action="@{/admin/categories/saveOrUpdate}"
+            method="post" th:object="${category}" class="row g-3">
+        <input type="hidden" th:field="*{categoryId}">
+        <input type="hidden" th:field="*{isEdit}">
+
+        <!-- ID chỉ hiển thị khi edit -->
+        <div class="col-12" th:if="${category.isEdit}">
+          <label class="form-label" th:text="#{cate.id}">Category ID</label>
+          <input class="form-control" th:field="*{categoryId}" readonly>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" th:text="#{cate.name}">Tên danh mục</label>
+          <input class="form-control" th:field="*{name}"
+                 th:placeholder="#{cate.name.placeholder}" required>
+          <div class="text-danger small" th:if="${#fields.hasErrors('name')}"
+               th:errors="*{name}">Lỗi tên</div>
+        </div>
+
+        <div class="col-12">
+          <!-- Nút đổi tên theo trạng thái -->
+          <button type="submit" class="btn btn-primary"
+                  th:text="${category.isEdit} ? #{btn.update} : #{btn.save}">
+            Lưu
+          </button>
+          <a class="btn btn-secondary ms-2"
+             th:href="@{/admin/categories}"
+             th:text="#{btn.back}">Quay lại</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>
